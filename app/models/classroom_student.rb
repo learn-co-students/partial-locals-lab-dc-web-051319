@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: classroom_students
@@ -12,4 +14,8 @@
 class ClassroomStudent < ActiveRecord::Base
   belongs_to :classroom
   belongs_to :student
+
+  def oldest_student
+    students.order(:birthday).last
+  end
 end
